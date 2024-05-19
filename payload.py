@@ -8,8 +8,8 @@ def run():
     print("running Payload")
     # <--- Payload:
     # Schreibe hier einen Code, der durch die emulation von
-    # Tastatureingaben den Editor "notepad" öffnet und in
-    # diesen den String "Hallo Welt" schreibt.
+    # Tastatureingaben den Editor 'notepad' öffnet und in
+    # diesen den String 'Hallo Welt!' schreibt.
     #
     # Verwende dabei die Befehle:
     
