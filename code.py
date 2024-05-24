@@ -6,22 +6,25 @@ from time import sleep
 import supervisor
 supervisor.runtime.autoreload = False
 
-# Vervollständige den Code um zu prüfen, ob der Angriff ausgeführt werden soll:
-# attackMode = False
-# attackPin = digitalio.DigitalInOut(???)
-# attackPin.direction = digitalio.Direction.???
-# attackPin.pull = digitalio.Pull.UP
-# attackMode = attackPin.???
+attackPin = digitalio.DigitalInOut(GP15)
+attackPin.direction = digitalio.Direction.INPUT
+attackPin.pull = digitalio.Pull.UP
+attackMode = attackPin.value
 
-# Nutze die obige Variable um den Angriff nur unter bestimmten Bedingugen auszuführen:
-# if(??? == True):
-    # < --- Lasse die rote LED 10 mal blinken
-    # Dabei soll sie 0.25 Sekunden an und wieder aus sein.
-    #
-    # --->
-payload.run() # Nicht vergessen diese Zeile einzurücken.
-# else:
-    # < --- Lasse die grüne LED 10 mal blinken
-    # Dabei soll sie 0.25 Sekunden an und wieder aus sein.
-    #
-    # --->
+if(attackMode == True):
+    red_led = digitalio.DigitalInOut(GP10)
+    red_led.direction = digitalio.Direction.OUTPUT
+    for i in range(0,10):
+        red_led.value = True
+        sleep(0.25)
+        red_led.value = False
+        sleep(0.25)
+    payload.run()
+else:
+    green_led = digitalio.DigitalInOut(GP21)
+    green_led.direction = digitalio.Direction.OUTPUT
+    for i in range(0,10):
+        green_led.value = True
+        sleep(0.25)
+        green_led.value = False
+        sleep(0.25)
